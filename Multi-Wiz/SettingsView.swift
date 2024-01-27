@@ -44,7 +44,6 @@ struct SettingsView: View {
     }
     
     func startGame(tableOf num: Int, _ nOfQuestions: Int) {
-        
         allQuestions = GameLogic.createQuiz(num, nOfQuestions)
         gameOn = true
     }
