@@ -13,6 +13,9 @@ struct QuizView: View {
     @Binding var userAnswer: String
     @Binding var questionIndex: Int
     @Binding var numberOfQuestions: Int
+    @Binding var backHome: Bool
+    @Binding var gameOn: Bool
+    @FocusState var txtFieldFocused: Bool
     
     var body: some View {
         Form {
@@ -26,6 +29,7 @@ struct QuizView: View {
             }
             Section {
                 TextField("Type your answer", text: $userAnswer)
+                    .focused($txtFieldFocused)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
             }
@@ -37,21 +41,49 @@ struct QuizView: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .scrollDisabled(true)
+        .opacity(backHome ? 0 : 1)
+        .onAppear {
+            backHome = false
+            txtFieldFocused = true
+        }
+        
+        if backHome {
+            VStack {
+                Spacer()
+                Text("GAME OVER")
+                    .font(.largeTitle)
+                Spacer()
+                Button("Go Back") {
+                    questionIndex = 0
+                    gameOn = false
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                Spacer()
+            }
+        }
     }
     
     func checkAnswer() {
+        guard userAnswer != "" else {
+            print("you havent typed anything")
+            return
+        }
+        
         if userAnswer == allQuestions[questionIndex].correctAnswer {
             print("CORRECT!")
         } else {
             print("WRONG! The correct answer is \(allQuestions[questionIndex].correctAnswer)")
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if questionIndex + 1 <= numberOfQuestions - 1 {
+            if questionIndex < numberOfQuestions - 1 {
                 questionIndex += 1
-                userAnswer = ""
             } else {
-                print("GAME OVER")
+                backHome = true
+                txtFieldFocused = false
             }
+            userAnswer = ""
         }
     }
 }

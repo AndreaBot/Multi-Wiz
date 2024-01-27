@@ -11,11 +11,12 @@ struct ContentView: View {
     
     
     @State private var baseNumber = 2
-    @State private var numberOfQuestions = 5
+    @State private var numberOfQuestions = 1
     @State private var userAnswer = ""
     @State private var allQuestions = [QuestionModel]()
     @State private var questionIndex = 0
     @State private var gameOn = false
+    @State private var backHome = false
     
     var body: some View {
         NavigationStack {
@@ -32,7 +33,7 @@ struct ContentView: View {
                     }
                     
                     Section {
-                        Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 5...20)
+                        Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 1...20)
                     }
                     
                     HStack {
@@ -46,9 +47,10 @@ struct ContentView: View {
                 }
                 .navigationTitle("Multi-Wiz")
                 .opacity(gameOn ? 0 : 1)
+                .scrollDisabled(true)
                 
                 if gameOn {
-                    QuizView(allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions)
+                    QuizView(allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn)
                         .opacity(gameOn ? 1 : 0)
                 }
             }
