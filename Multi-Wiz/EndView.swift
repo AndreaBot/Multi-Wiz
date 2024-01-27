@@ -26,7 +26,7 @@ struct EndView: View {
                 Text("GAME OVER")
                     .font(.largeTitle)
                 
-                Text("You have answered \(correctAnswersCount) questions correctly out of \(numberOfQuestions)")
+                Text("Final Score: \(correctAnswersCount)/\(numberOfQuestions)")
             }
             VStack(spacing: 30) {
                 Spacer()
@@ -44,6 +44,7 @@ struct EndView: View {
                 Button("Go Back") {
                     questionIndex = 0
                     gameOn = false
+                    backHome = false
                     correctAnswersCount = 0
                 }
                 .frame(maxWidth: .infinity)
