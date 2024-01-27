@@ -26,6 +26,8 @@ struct QuizView: View {
         if backHome {
             EndView(baseNumber: $baseNumber, allQuestions: $allQuestions, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn, txtFieldFocused: _txtFieldFocused, correctAnswersCount: $correctAnswersCount)
         } else {
+            ProgressView("Question \(questionIndex + 1)/\(numberOfQuestions)", value: Double(questionIndex + 1), total: Double(numberOfQuestions))
+            
             Form {
                 Section {
                     Text("What is")
