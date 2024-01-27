@@ -18,6 +18,8 @@ struct QuizView: View {
     @Binding var gameOn: Bool
     @FocusState var txtFieldFocused: Bool
     
+    @State private var result: FeedbackEnum = .neutral
+    
     var body: some View {
         Form {
             Section {
@@ -26,13 +28,16 @@ struct QuizView: View {
                     .frame(maxWidth: .infinity)
                 Text(allQuestions[questionIndex].question)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             Section {
                 TextField("Type your answer", text: $userAnswer)
                     .focused($txtFieldFocused)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(GameLogic.feedbackColor(result))
+                    .clipShape(Capsule())
             }
             
             Section {
@@ -54,7 +59,6 @@ struct QuizView: View {
         }
     }
     
-    
     func checkAnswer() {
         guard userAnswer != "" else {
             print("you havent typed anything")
@@ -62,9 +66,9 @@ struct QuizView: View {
         }
         
         if userAnswer == allQuestions[questionIndex].correctAnswer {
-            print("CORRECT!")
+            result = .correct
         } else {
-            print("WRONG! The correct answer is \(allQuestions[questionIndex].correctAnswer)")
+            result = .wrong
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if questionIndex < numberOfQuestions - 1 {
@@ -74,6 +78,7 @@ struct QuizView: View {
                 txtFieldFocused = false
             }
             userAnswer = ""
+            result = .neutral
         }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Andrea Bottino on 27/01/2024.
 //
 
-import Foundation
+import SwiftUI
 
 struct GameLogic {
     
@@ -22,5 +22,13 @@ struct GameLogic {
             
         }
         return questionArray
+    }
+    
+    static func feedbackColor(_ feedback: FeedbackEnum) -> Color {
+        switch feedback {
+        case .neutral: return .clear;
+        case .correct: return .green;
+        case .wrong: return .red;
+        }
     }
 }

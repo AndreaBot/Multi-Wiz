@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
     @State private var baseNumber = 2
     @State private var numberOfQuestions = 5
     @State private var userAnswer = ""
