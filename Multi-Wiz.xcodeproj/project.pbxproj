@@ -12,6 +12,7 @@
 		6252E61D2B6577700074F46A /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E61C2B6577700074F46A /* GameLogic.swift */; };
 		6252E61F2B657E7C0074F46A /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E61E2B657E7C0074F46A /* EndView.swift */; };
 		6252E6212B65826F0074F46A /* FeedbackEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E6202B65826F0074F46A /* FeedbackEnum.swift */; };
+		6252E6232B6587D10074F46A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E6222B6587D10074F46A /* SettingsView.swift */; };
 		62ED76E02B65145A00262298 /* Multi_WizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED76DF2B65145A00262298 /* Multi_WizApp.swift */; };
 		62ED76E22B65145A00262298 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED76E12B65145A00262298 /* ContentView.swift */; };
 		62ED76E42B65145C00262298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62ED76E32B65145C00262298 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		6252E61C2B6577700074F46A /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		6252E61E2B657E7C0074F46A /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
 		6252E6202B65826F0074F46A /* FeedbackEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEnum.swift; sourceTree = "<group>"; };
+		6252E6222B6587D10074F46A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		62ED76DC2B65145A00262298 /* Multi-Wiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multi-Wiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62ED76DF2B65145A00262298 /* Multi_WizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi_WizApp.swift; sourceTree = "<group>"; };
 		62ED76E12B65145A00262298 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				62ED76DF2B65145A00262298 /* Multi_WizApp.swift */,
 				62ED76E12B65145A00262298 /* ContentView.swift */,
+				6252E6222B6587D10074F46A /* SettingsView.swift */,
 				6252E6182B653AE70074F46A /* QuizView.swift */,
 				6252E61E2B657E7C0074F46A /* EndView.swift */,
 				6252E61A2B6559CD0074F46A /* QuestionModel.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6252E61F2B657E7C0074F46A /* EndView.swift in Sources */,
+				6252E6232B6587D10074F46A /* SettingsView.swift in Sources */,
 				62ED76E22B65145A00262298 /* ContentView.swift in Sources */,
 				62ED76E02B65145A00262298 /* Multi_WizApp.swift in Sources */,
 				6252E6192B653AE70074F46A /* QuizView.swift in Sources */,

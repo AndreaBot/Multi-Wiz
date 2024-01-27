@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var baseNumber = 2
-    @State private var numberOfQuestions = 5
+    @State private var numberOfQuestions = 1
     @State private var userAnswer = ""
     @State private var allQuestions = [QuestionModel]()
     @State private var questionIndex = 0
@@ -18,48 +18,18 @@ struct ContentView: View {
     @State private var backHome = false
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Form {
-                    Section {
-                        Picker("I want to practice the multiplication table of:", selection: $baseNumber) {
-                            ForEach(0..<10) { number in
-                                if number != 0 && number != 1 {
-                                    Text("\(number)")
-                                }
-                            }
-                        }
-                    }
-                    
-                    Section {
-                        Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 5...20)
-                    }
-                    
-                    HStack {
-                        Spacer()
-                        Button("START") {
-                            gameOn = true
-                            startGame(tableOf: baseNumber, numberOfQuestions)
-                        }
-                        Spacer()
-                    }
-                }
-                .navigationTitle("Multi-Wiz")
-                .opacity(gameOn ? 0 : 1)
-                .scrollDisabled(true)
+        NavigationView {
+            NavigationStack {
                 
                 if gameOn {
                     QuizView(baseNumber: $baseNumber, allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn)
-                        .opacity(gameOn ? 1 : 0)
+                    
+                } else {
+                    SettingsView(baseNumber: $baseNumber, numberOfQuestions: $numberOfQuestions, userAnswer: $userAnswer, allQuestions: $allQuestions, questionIndex: $questionIndex, gameOn: $gameOn, backHome: $backHome)
                 }
             }
+            .navigationTitle("Multi-Wiz")
         }
-    }
-    
-    func startGame(tableOf num: Int, _ nOfQuestions: Int) {
-        
-        allQuestions = GameLogic.createQuiz(num, nOfQuestions)
-        gameOn = true
     }
 }
 
