@@ -13,8 +13,7 @@ struct ContentView: View {
     @State private var baseNumber = 2
     @State private var numberOfQuestions = 5
     @State private var answer = ""
-    @State private var allQuestions = [String]()
-    @State private var correctAnswers = [Int]()
+    @State private var allQuestions = [QuestionModel]()
     @State private var question = ""
     @State private var gameOn = false
     
@@ -58,25 +57,23 @@ struct ContentView: View {
     
     func startGame(tableOf num: Int, _ nOfQuestions: Int) {
         gameOn = true
-        let tuple = storeCorrectAnswers(num, numberOfQuestions)
-        allQuestions = tuple.0
-        correctAnswers = tuple.1
-        question = allQuestions[0]
+        allQuestions = createQuiz(num, nOfQuestions)
+        question = allQuestions[0].question
     }
     
-    
-    
-    func storeCorrectAnswers( _ baseN: Int, _ nOfQuestions: Int) -> (allQuestions: [String], allResults: [Int]) {
-        var questionArray = [String]()
-        var resultArray = [Int]()
+    func createQuiz( _ baseN: Int, _ nOfQuestions: Int) -> [QuestionModel] {
+        var questionArray = [QuestionModel]()
         
         for _ in (1...nOfQuestions) {
             let randomNumber = Int.random(in: 2...12)
             let result = baseN * randomNumber
-            questionArray.append("\(baseN) x \(randomNumber)")
-            resultArray.append(result)
+            let questionString = "\(baseN) x \(randomNumber)"
+            let questionResult = (String(result))
+            let newQuestion = QuestionModel(q: questionString, a: questionResult)
+            questionArray.append(newQuestion)
+            
         }
-        return (questionArray, resultArray)
+        return questionArray
     }
 }
 
