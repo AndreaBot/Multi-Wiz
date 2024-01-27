@@ -12,9 +12,9 @@ struct ContentView: View {
     
     @State private var baseNumber = 2
     @State private var numberOfQuestions = 5
-    @State private var answer = ""
+    @State private var userAnswer = ""
     @State private var allQuestions = [QuestionModel]()
-    @State private var question = ""
+    @State private var questionIndex = 0
     @State private var gameOn = false
     
     var body: some View {
@@ -38,10 +38,8 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button("START") {
-                            gameOn.toggle()
-                            if gameOn {
-                                startGame(tableOf: baseNumber, numberOfQuestions)
-                            }
+                            gameOn = true
+                            startGame(tableOf: baseNumber, numberOfQuestions)
                         }
                         Spacer()
                     }
@@ -49,16 +47,18 @@ struct ContentView: View {
                 .navigationTitle("Multi-Wiz")
                 .opacity(gameOn ? 0 : 1)
                 
-                QuizView(question: $question, answer: $answer)
-                    .opacity(gameOn ? 1 : 0)
+                if gameOn {
+                    QuizView(allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions)
+                        .opacity(gameOn ? 1 : 0)
+                }
             }
         }
     }
     
     func startGame(tableOf num: Int, _ nOfQuestions: Int) {
-        gameOn = true
+        
         allQuestions = createQuiz(num, nOfQuestions)
-        question = allQuestions[0].question
+        gameOn = true
     }
     
     func createQuiz( _ baseN: Int, _ nOfQuestions: Int) -> [QuestionModel] {
