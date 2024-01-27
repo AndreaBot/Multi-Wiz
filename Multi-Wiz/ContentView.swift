@@ -20,52 +20,39 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    Picker("I want to practice the multiplication table of:", selection: $baseNumber) {
-                        ForEach(0..<10) { number in
-                            if number != 0 && number != 1 {
-                                Text("\(number)")
+            ZStack {
+                Form {
+                    Section {
+                        Picker("I want to practice the multiplication table of:", selection: $baseNumber) {
+                            ForEach(0..<10) { number in
+                                if number != 0 && number != 1 {
+                                    Text("\(number)")
+                                }
                             }
                         }
                     }
-                }
-                
-                Section {
-                    Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 5...20)
-                }
-                
-                HStack {
-                    Spacer()
-                    Button("START") {
-                        gameOn.toggle()
-                        if gameOn {
-                            startGame(tableOf: baseNumber, numberOfQuestions)
-                        }
-                    }
-                    Spacer()
-                }
-                
-                if gameOn {
+                    
                     Section {
-                        Text("What is")
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity)
-                        Text(question)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity)
-                        TextField("Type your answer", text: $answer)
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.center)
-                        Button("Check Your Answer") {
-                            
-                        }
-                        .frame(maxWidth: .infinity)
+                        Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 5...20)
                     }
                     
+                    HStack {
+                        Spacer()
+                        Button("START") {
+                            gameOn.toggle()
+                            if gameOn {
+                                startGame(tableOf: baseNumber, numberOfQuestions)
+                            }
+                        }
+                        Spacer()
+                    }
                 }
+                .navigationTitle("Multi-Wiz")
+                .opacity(gameOn ? 0 : 1)
+                
+                QuizView(question: $question, answer: $answer)
+                    .opacity(gameOn ? 1 : 0)
             }
-            .navigationTitle("Multi-Wiz")
         }
     }
     
