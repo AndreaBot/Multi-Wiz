@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     
+    @Binding var baseNumber: Int
     @Binding var allQuestions: [QuestionModel]
     @Binding var userAnswer: String
     @Binding var questionIndex: Int
@@ -49,21 +50,31 @@ struct QuizView: View {
         }
         
         if backHome {
-            VStack {
-                Spacer()
+            VStack(spacing: 40) {
                 Text("GAME OVER")
                     .font(.largeTitle)
-                Spacer()
+                    .frame(height: UIScreen.main.bounds.size.height * 0.4)
+                
+                Button("Try Again") {
+                    allQuestions = GameLogic.createQuiz(baseNumber, numberOfQuestions)
+                    backHome = false
+                    questionIndex = 0
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                
                 Button("Go Back") {
                     questionIndex = 0
                     gameOn = false
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.borderedProminent)
+                
                 Spacer()
             }
         }
     }
+    
     
     func checkAnswer() {
         guard userAnswer != "" else {

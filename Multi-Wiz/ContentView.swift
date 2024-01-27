@@ -11,7 +11,7 @@ struct ContentView: View {
     
     
     @State private var baseNumber = 2
-    @State private var numberOfQuestions = 1
+    @State private var numberOfQuestions = 5
     @State private var userAnswer = ""
     @State private var allQuestions = [QuestionModel]()
     @State private var questionIndex = 0
@@ -33,7 +33,7 @@ struct ContentView: View {
                     }
                     
                     Section {
-                        Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 1...20)
+                        Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 5...20)
                     }
                     
                     HStack {
@@ -50,7 +50,7 @@ struct ContentView: View {
                 .scrollDisabled(true)
                 
                 if gameOn {
-                    QuizView(allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn)
+                    QuizView(baseNumber: $baseNumber, allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn)
                         .opacity(gameOn ? 1 : 0)
                 }
             }
@@ -59,23 +59,8 @@ struct ContentView: View {
     
     func startGame(tableOf num: Int, _ nOfQuestions: Int) {
         
-        allQuestions = createQuiz(num, nOfQuestions)
+        allQuestions = GameLogic.createQuiz(num, nOfQuestions)
         gameOn = true
-    }
-    
-    func createQuiz( _ baseN: Int, _ nOfQuestions: Int) -> [QuestionModel] {
-        var questionArray = [QuestionModel]()
-        
-        for _ in (1...nOfQuestions) {
-            let randomNumber = Int.random(in: 2...12)
-            let result = baseN * randomNumber
-            let questionString = "\(baseN) x \(randomNumber)"
-            let questionResult = (String(result))
-            let newQuestion = QuestionModel(q: questionString, a: questionResult)
-            questionArray.append(newQuestion)
-            
-        }
-        return questionArray
     }
 }
 
