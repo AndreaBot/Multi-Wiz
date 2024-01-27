@@ -16,16 +16,17 @@ struct ContentView: View {
     @State private var questionIndex = 0
     @State private var gameOn = false
     @State private var backHome = false
+    @State private var correctAnswerCount = 0
     
     var body: some View {
         NavigationView {
             NavigationStack {
                 
                 if gameOn {
-                    QuizView(baseNumber: $baseNumber, allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn)
+                    QuizView(baseNumber: $baseNumber, allQuestions: $allQuestions, userAnswer: $userAnswer, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn, correctAnswersCount: $correctAnswerCount)
                     
                 } else {
-                    SettingsView(baseNumber: $baseNumber, numberOfQuestions: $numberOfQuestions, userAnswer: $userAnswer, allQuestions: $allQuestions, questionIndex: $questionIndex, gameOn: $gameOn, backHome: $backHome)
+                    SettingsView(baseNumber: $baseNumber, numberOfQuestions: $numberOfQuestions, allQuestions: $allQuestions,  gameOn: $gameOn)
                 }
             }
             .navigationTitle("Multi-Wiz")

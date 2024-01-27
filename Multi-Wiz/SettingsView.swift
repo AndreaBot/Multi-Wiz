@@ -11,11 +11,8 @@ struct SettingsView: View {
     
     @Binding var baseNumber: Int
     @Binding var numberOfQuestions: Int
-    @Binding var userAnswer: String
     @Binding var allQuestions: [QuestionModel]
-    @Binding var questionIndex: Int
     @Binding var gameOn: Bool
-    @Binding var backHome: Bool
     
     var body: some View {
         Form {

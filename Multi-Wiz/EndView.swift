@@ -17,29 +17,40 @@ struct EndView: View {
     @Binding var gameOn: Bool
     @FocusState var txtFieldFocused: Bool
     
+    @Binding var correctAnswersCount: Int
+    
     var body: some View {
         VStack(spacing: 40) {
-            Text("GAME OVER")
-                .font(.largeTitle)
-                .frame(height: UIScreen.main.bounds.size.height * 0.4)
-            
-            Button("Try Again") {
-                allQuestions = GameLogic.createQuiz(baseNumber, numberOfQuestions)
-                backHome = false
-                questionIndex = 0
-                txtFieldFocused = true
+            VStack {
+                Spacer()
+                Text("GAME OVER")
+                    .font(.largeTitle)
+                
+                Text("You have answered \(correctAnswersCount) questions correctly out of \(numberOfQuestions)")
             }
-            .frame(maxWidth: .infinity)
-            .buttonStyle(.borderedProminent)
-            
-            Button("Go Back") {
-                questionIndex = 0
-                gameOn = false
+            VStack(spacing: 30) {
+                Spacer()
+                
+                Button("Try Again") {
+                    allQuestions = GameLogic.createQuiz(baseNumber, numberOfQuestions)
+                    backHome = false
+                    questionIndex = 0
+                    txtFieldFocused = true
+                    correctAnswersCount = 0
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                
+                Button("Go Back") {
+                    questionIndex = 0
+                    gameOn = false
+                    correctAnswersCount = 0
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
-            .buttonStyle(.borderedProminent)
-            
-            Spacer()
         }
     }
 }

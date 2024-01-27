@@ -19,43 +19,45 @@ struct QuizView: View {
     @FocusState var txtFieldFocused: Bool
     
     @State private var result: FeedbackEnum = .neutral
+    @Binding var correctAnswersCount: Int
     
     var body: some View {
-        Form {
-            Section {
-                Text("What is")
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                Text(allQuestions[questionIndex].question)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-            Section {
-                TextField("Type your answer", text: $userAnswer)
-                    .focused($txtFieldFocused)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(GameLogic.feedbackColor(result))
-                    .clipShape(Capsule())
-            }
-            
-            Section {
-                Button("Check Your Answer") {
-                    checkAnswer()
-                }
-                .frame(maxWidth: .infinity)
-            }
-        }
-        .scrollDisabled(true)
-        .opacity(backHome ? 0 : 1)
-        .onAppear {
-            backHome = false
-            txtFieldFocused = true
-        }
         
         if backHome {
-            EndView(baseNumber: $baseNumber, allQuestions: $allQuestions, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn, txtFieldFocused: _txtFieldFocused)
+            EndView(baseNumber: $baseNumber, allQuestions: $allQuestions, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, backHome: $backHome, gameOn: $gameOn, txtFieldFocused: _txtFieldFocused, correctAnswersCount: $correctAnswersCount)
+        } else {
+            Form {
+                Section {
+                    Text("What is")
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                    Text(allQuestions[questionIndex].question)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                Section {
+                    TextField("Type your answer", text: $userAnswer)
+                        .focused($txtFieldFocused)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(GameLogic.feedbackColor(result))
+                        .clipShape(Capsule())
+                }
+                
+                Section {
+                    Button("Check Your Answer") {
+                        checkAnswer()
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            .scrollDisabled(true)
+            .opacity(backHome ? 0 : 1)
+            .onAppear {
+                backHome = false
+                txtFieldFocused = true
+            }
         }
     }
     
@@ -67,6 +69,7 @@ struct QuizView: View {
         
         if userAnswer == allQuestions[questionIndex].correctAnswer {
             result = .correct
+            correctAnswersCount += 1
         } else {
             result = .wrong
         }
