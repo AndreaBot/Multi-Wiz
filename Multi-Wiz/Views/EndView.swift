@@ -13,11 +13,11 @@ struct EndView: View {
     @Binding var allQuestions: [QuestionModel]
     @Binding var questionIndex: Int
     @Binding var numberOfQuestions: Int
-    @Binding var backHome: Bool
-    @Binding var gameOn: Bool
+    @Binding var gameOver: Bool
     @FocusState var txtFieldFocused: Bool
     
     @Binding var correctAnswersCount: Int
+    
     
     var body: some View {
         VStack(spacing: 40) {
@@ -33,18 +33,9 @@ struct EndView: View {
                 
                 Button("Try Again") {
                     allQuestions = GameLogic.createQuiz(baseNumber, numberOfQuestions)
-                    backHome = false
+                    gameOver = false
                     questionIndex = 0
                     txtFieldFocused = true
-                    correctAnswersCount = 0
-                }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                
-                Button("Go Back") {
-                    questionIndex = 0
-                    gameOn = false
-                    backHome = false
                     correctAnswersCount = 0
                 }
                 .frame(maxWidth: .infinity)
@@ -55,3 +46,4 @@ struct EndView: View {
         }
     }
 }
+
