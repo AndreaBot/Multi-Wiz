@@ -14,7 +14,6 @@ struct ContentView: View {
                 HomeScreenView()
             }
             .navigationTitle("Multi-Wiz")
-        
     }
 }
 

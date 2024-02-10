@@ -9,8 +9,8 @@ import SwiftUI
 
 struct QuizView: View {
     
-    @State  var baseNumber: Int
-    @State  var numberOfQuestions: Int
+    @State var baseNumber: Int
+    @State var numberOfQuestions: Int
     @State private var allQuestions = [QuestionModel]() {
         didSet {
             gameIsReady = true

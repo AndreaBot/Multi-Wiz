@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EndView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var baseNumber: Int
     @Binding var allQuestions: [QuestionModel]
     @Binding var questionIndex: Int
@@ -45,6 +47,12 @@ struct EndView: View {
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.borderedProminent)
                 
+                Button("Back to Setup") {
+                    dismiss()
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                
                 Spacer()
             }
         }
@@ -52,6 +60,7 @@ struct EndView: View {
             print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         })
         .onDisappear(perform: saveStats)
+        .navigationBarBackButtonHidden()
     }
     
     func saveStats() {

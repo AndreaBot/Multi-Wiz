@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeScreenView: View {
+    
     var body: some View {
             ZStack {
                 Color(.myPurple)
@@ -22,7 +23,7 @@ struct HomeScreenView: View {
                         }
                     
                     NavigationLink {
-                       SettingsView()
+                        SettingsView()
                     } label: {
                         Text("START")
                             .font(.title)
