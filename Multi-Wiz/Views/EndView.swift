@@ -18,6 +18,10 @@ struct EndView: View {
     
     @Binding var correctAnswersCount: Int
     
+    var stat: StatModel {
+        loadStats() ?? StatModel(baseNumber: baseNumber, totGames: 0, mistakePercentage: 0)
+        
+    }
     
     var body: some View {
         VStack(spacing: 40) {
@@ -43,6 +47,28 @@ struct EndView: View {
                 
                 Spacer()
             }
+        }
+        .onAppear(perform: {
+            print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        })
+        .onDisappear(perform: saveStats)
+    }
+    
+    func saveStats() {
+        let percentage = Double(100 * (numberOfQuestions-correctAnswersCount) / numberOfQuestions)
+        let newStat = StatModel(baseNumber: baseNumber, totGames: stat.totGames + 1, mistakePercentage: (stat.mistakePercentage + percentage) / Double(stat.totGames + 1))
+        
+        if let statData = try? JSONEncoder().encode(newStat) {
+            UserDefaults.standard.set(statData, forKey: "table of \(baseNumber)")
+        }
+    }
+    
+    func loadStats() -> StatModel?  {
+        if let savedData = UserDefaults.standard.object(forKey: "table of \(baseNumber)") as? Data,
+           let stat = try? JSONDecoder().decode(StatModel.self, from: savedData) {
+            return stat
+        } else {
+            return nil
         }
     }
 }

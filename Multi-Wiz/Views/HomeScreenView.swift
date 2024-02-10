@@ -30,7 +30,7 @@ struct HomeScreenView: View {
                     }
                     
                     NavigationLink {
-                        Text("MY STATS")
+                        AllStatsView()
                     } label: {
                         Text("MY STATS")
                             .font(.title)
