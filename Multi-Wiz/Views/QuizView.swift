@@ -38,7 +38,7 @@ struct QuizView: View {
                             .padding()
                         
                         Form {
-                            Section {
+                            VStack {
                                 Text("What is")
                                     .multilineTextAlignment(.center)
                                     .frame(maxWidth: .infinity)
@@ -52,6 +52,7 @@ struct QuizView: View {
                                     .keyboardType(.numberPad)
                                     .multilineTextAlignment(.center)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .background(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width).fill(GameLogic.feedbackColor(result)))
                                     .background(GameLogic.feedbackColor(result))
                                     .clipShape(Capsule())
                             }

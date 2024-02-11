@@ -26,18 +26,17 @@ struct HomeScreenView: View {
                         SettingsView()
                     } label: {
                         Text("START")
-                            .font(.title)
-                            .fontWeight(.semibold)
+                            .stylePrimaryButton()
                     }
                     
                     NavigationLink {
                         AllStatsView()
                     } label: {
                         Text("MY STATS")
-                            .font(.title)
-                            .fontWeight(.semibold)
+                            .styleSecondaryButton()
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationTitle("Multi Wiz")
         }
     }

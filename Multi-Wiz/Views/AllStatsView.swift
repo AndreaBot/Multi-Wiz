@@ -25,7 +25,9 @@ struct AllStatsView: View {
             ForEach(allStats, id: \.baseNumber) { stat in
                 StatsView(stat: stat)
             }
+            .listRowSeparator(.hidden)
         }
+        
         .listStyle(.plain)
         .navigationTitle("My Stats")
     }

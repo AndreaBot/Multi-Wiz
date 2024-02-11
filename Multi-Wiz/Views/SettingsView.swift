@@ -15,10 +15,12 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Spacer()
+                .containerRelativeFrame(.vertical) { size, axis in
+                    size * 0.25}
             
             Form {
                 Section {
-                    Picker("I want to practice the multiplication table of:", selection: $baseNumber) {
+                    Picker("Base number:", selection: $baseNumber) {
                         ForEach(0..<10) { number in
                             if number != 0 && number != 1 {
                                 Text("\(number)")
@@ -42,8 +44,6 @@ struct SettingsView: View {
             }
             .scrollDisabled(true)
             .scrollContentBackground(.hidden)
-            
-            Spacer()
         }
         .background(.myPurple)
         .navigationTitle("Setup")

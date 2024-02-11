@@ -44,14 +44,12 @@ struct EndView: View {
                     txtFieldFocused = true
                     correctAnswersCount = 0
                 }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
+                .stylePrimaryButton()
                 
                 Button("Back to Setup") {
                     dismiss()
                 }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
+                .styleSecondaryButton()
                 
                 Spacer()
             }

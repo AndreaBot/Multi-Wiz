@@ -27,6 +27,7 @@ struct StatsView: View {
                     Text("Games Played: \(stat.totGames)")
                     Text("Average Mistakes %: \(String(format: "%.1f", stat.mistakePercentage))")
                 }
+                .foregroundStyle(.background)
                 .containerRelativeFrame(.horizontal) { size, axis  in
                     size * 0.6
                 }
