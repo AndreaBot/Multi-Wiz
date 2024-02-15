@@ -42,6 +42,11 @@ struct EndView: View {
                 }
                 .styleSecondaryButton()
                 
+                Button("Back Home") {
+                    path.removeAll()
+                }
+                .styleSecondaryButton()
+                
                 Spacer()
             }
         }
