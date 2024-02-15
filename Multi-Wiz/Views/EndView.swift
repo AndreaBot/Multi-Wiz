@@ -9,19 +9,11 @@ import SwiftUI
 
 struct EndView: View {
     
-    @Environment(\.dismiss) var dismiss
-    
-    @Binding var baseNumber: Int
-    @Binding var allQuestions: [QuestionModel]
-    @Binding var questionIndex: Int
-    @Binding var numberOfQuestions: Int
-    @Binding var gameOver: Bool
-    @FocusState var txtFieldFocused: Bool
-    
-    @Binding var correctAnswersCount: Int
+    @Binding var path: [QuizNavigation]
+    @Binding var data: QuizData
     
     var stat: StatModel {
-        loadStats() ?? StatModel(baseNumber: baseNumber, totGames: 0, mistakePercentage: 0)
+        loadStats() ?? StatModel(baseNumber: data.baseNumber, totGames: 0, mistakePercentage: 0)
         
     }
     
@@ -32,22 +24,21 @@ struct EndView: View {
                 Text("GAME OVER")
                     .font(.largeTitle)
                 
-                Text("Final Score: \(correctAnswersCount)/\(numberOfQuestions)")
+                Text("Final Score: \(data.correctAnswersCount)/\(data.numberOfQuestions)")
             }
             VStack(spacing: 30) {
                 Spacer()
                 
                 Button("Try Again") {
-                    allQuestions = GameLogic.createQuiz(baseNumber, numberOfQuestions)
-                    gameOver = false
-                    questionIndex = 0
-                    txtFieldFocused = true
-                    correctAnswersCount = 0
+                    data.allQuestions = GameLogic.createQuiz(data.baseNumber, data.numberOfQuestions)
+                    data.questionIndex = 0
+                    data.correctAnswersCount = 0
+                    path.removeLast()
                 }
                 .stylePrimaryButton()
                 
                 Button("Back to Setup") {
-                    dismiss()
+                    path.removeLast(2)
                 }
                 .styleSecondaryButton()
                 
@@ -62,21 +53,25 @@ struct EndView: View {
     }
     
     func saveStats() {
-        let percentage = Double(100 * (numberOfQuestions-correctAnswersCount) / numberOfQuestions)
-        let newStat = StatModel(baseNumber: baseNumber, totGames: stat.totGames + 1, mistakePercentage: (stat.mistakePercentage + percentage) / Double(stat.totGames + 1))
+        let percentage = Double(100 * (data.numberOfQuestions - data.correctAnswersCount) / data.numberOfQuestions)
+        let newStat = StatModel(baseNumber: data.baseNumber, totGames: stat.totGames + 1, mistakePercentage: (stat.mistakePercentage + percentage) / Double(stat.totGames + 1))
         
         if let statData = try? JSONEncoder().encode(newStat) {
-            UserDefaults.standard.set(statData, forKey: "table of \(baseNumber)")
+            UserDefaults.standard.set(statData, forKey: "table of \(data.baseNumber)")
         }
     }
     
     func loadStats() -> StatModel?  {
-        if let savedData = UserDefaults.standard.object(forKey: "table of \(baseNumber)") as? Data,
+        if let savedData = UserDefaults.standard.object(forKey: "table of \(data.baseNumber)") as? Data,
            let stat = try? JSONDecoder().decode(StatModel.self, from: savedData) {
             return stat
         } else {
             return nil
         }
     }
+}
+
+#Preview {
+    EndView(path: PreviewsData.path, data: PreviewsData.data)
 }
 

@@ -9,32 +9,24 @@ import SwiftUI
 
 struct QuizView: View {
     
-    @State var baseNumber: Int
-    @State var numberOfQuestions: Int
-    @State private var allQuestions = [QuestionModel]() {
-        didSet {
-            gameIsReady = true
-        }
-    }
+    @Binding var path: [QuizNavigation]
+    @Binding var data: QuizData
+
     @State private var gameIsReady = false
     @State private var userAnswer = ""
-    @State private var questionIndex = 0
+    @State private var result: FeedbackEnum = .neutral
     
     @FocusState private var txtFieldFocused: Bool
-    @State private var result: FeedbackEnum = .neutral
-    @State private var correctAnswersCount = 0
     
-    @State private var gameOver = false
     
     var body: some View {
         ZStack {
             Color(.myPurple)
                 .ignoresSafeArea()
-            
-            if !gameOver {
-                if gameIsReady {
+
+            if data.allQuestions.count > 0 {
                     VStack {
-                        ProgressView("Question \(questionIndex + 1)/\(numberOfQuestions)", value: Double(questionIndex + 1), total: Double(numberOfQuestions))
+                        ProgressView("Question \(data.questionIndex + 1)/\(data.numberOfQuestions)", value: Double(data.questionIndex + 1), total: Double(data.numberOfQuestions))
                             .padding()
                         
                         Form {
@@ -42,7 +34,7 @@ struct QuizView: View {
                                 Text("What is")
                                     .multilineTextAlignment(.center)
                                     .frame(maxWidth: .infinity)
-                                Text(allQuestions[questionIndex].question)
+                                Text(data.allQuestions[data.questionIndex].question)
                                     .multilineTextAlignment(.center)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
@@ -68,14 +60,11 @@ struct QuizView: View {
                         .scrollContentBackground(.hidden)
                     }
                 }
-            } else {
-                EndView(baseNumber: $baseNumber, allQuestions: $allQuestions, questionIndex: $questionIndex, numberOfQuestions: $numberOfQuestions, gameOver: $gameOver, txtFieldFocused: _txtFieldFocused, correctAnswersCount: $correctAnswersCount)
             }
-        }
         .navigationTitle("Quiz")
         .onAppear {
             txtFieldFocused = true
-            allQuestions = GameLogic.createQuiz(baseNumber, numberOfQuestions)
+            data.allQuestions = GameLogic.createQuiz(data.baseNumber, data.numberOfQuestions)
         }
     }
     
@@ -85,18 +74,19 @@ struct QuizView: View {
             return
         }
         
-        if userAnswer == allQuestions[questionIndex].correctAnswer {
+        if userAnswer == data.allQuestions[data.questionIndex].correctAnswer {
             result = .correct
-            correctAnswersCount += 1
+            data.correctAnswersCount += 1
         } else {
             result = .wrong
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if questionIndex < numberOfQuestions - 1 {
-                questionIndex += 1
+            if data.questionIndex < data.numberOfQuestions - 1 {
+                data.questionIndex += 1
             } else {
                 txtFieldFocused = false
-                gameOver = true
+                path.append(.endView)
+
             }
             userAnswer = ""
             result = .neutral
@@ -105,5 +95,5 @@ struct QuizView: View {
 }
 
 #Preview {
-    QuizView(baseNumber: 2, numberOfQuestions: 5)
+    QuizView(path: PreviewsData.path, data: PreviewsData.data)
 }

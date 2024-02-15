@@ -13,7 +13,7 @@ struct SecondaryButtonModifier: ViewModifier {
         content
             .font(.title2)
             .fontWeight(.semibold)
-            .foregroundStyle(.white)
+            .foregroundStyle(.primary)
             .containerRelativeFrame(.horizontal) { size, axis in
                 size * 0.5
             }
@@ -23,7 +23,7 @@ struct SecondaryButtonModifier: ViewModifier {
             .background(.clear)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.white, lineWidth: 3))
+                    .stroke(.primary, lineWidth: 3))
     }
 }
 

@@ -13,6 +13,9 @@
 		621660B22B77ADE700A52BAE /* AllStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660B12B77ADE700A52BAE /* AllStatsView.swift */; };
 		621660CE2B79386200A52BAE /* PrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660CD2B79386200A52BAE /* PrimaryButtonModifier.swift */; };
 		621660D02B79394700A52BAE /* SecondaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660CF2B79394700A52BAE /* SecondaryButtonModifier.swift */; };
+		621661122B7EB72000A52BAE /* QuizNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621661112B7EB72000A52BAE /* QuizNavigation.swift */; };
+		621661142B7EBCF700A52BAE /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621661132B7EBCF700A52BAE /* QuizData.swift */; };
+		621661162B7ECD4700A52BAE /* PreviewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621661152B7ECD4700A52BAE /* PreviewsData.swift */; };
 		6252E6192B653AE70074F46A /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E6182B653AE70074F46A /* QuizView.swift */; };
 		6252E61B2B6559CD0074F46A /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E61A2B6559CD0074F46A /* QuestionModel.swift */; };
 		6252E61D2B6577700074F46A /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6252E61C2B6577700074F46A /* GameLogic.swift */; };
@@ -32,6 +35,9 @@
 		621660B12B77ADE700A52BAE /* AllStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStatsView.swift; sourceTree = "<group>"; };
 		621660CD2B79386200A52BAE /* PrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonModifier.swift; sourceTree = "<group>"; };
 		621660CF2B79394700A52BAE /* SecondaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonModifier.swift; sourceTree = "<group>"; };
+		621661112B7EB72000A52BAE /* QuizNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizNavigation.swift; sourceTree = "<group>"; };
+		621661132B7EBCF700A52BAE /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
+		621661152B7ECD4700A52BAE /* PreviewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewsData.swift; sourceTree = "<group>"; };
 		6252E6182B653AE70074F46A /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		6252E61A2B6559CD0074F46A /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		6252E61C2B6577700074F46A /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
@@ -59,10 +65,13 @@
 		621660A92B7782FD00A52BAE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				621661132B7EBCF700A52BAE /* QuizData.swift */,
 				6252E61C2B6577700074F46A /* GameLogic.swift */,
 				6252E6202B65826F0074F46A /* FeedbackEnum.swift */,
 				6252E61A2B6559CD0074F46A /* QuestionModel.swift */,
 				621660AF2B77A42A00A52BAE /* StatModel.swift */,
+				621661112B7EB72000A52BAE /* QuizNavigation.swift */,
+				621661152B7ECD4700A52BAE /* PreviewsData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -74,9 +83,9 @@
 				621660A72B777DA500A52BAE /* HomeScreenView.swift */,
 				6252E6222B6587D10074F46A /* SettingsView.swift */,
 				6252E6182B653AE70074F46A /* QuizView.swift */,
+				6252E61E2B657E7C0074F46A /* EndView.swift */,
 				621660AD2B77A21E00A52BAE /* StatsView.swift */,
 				621660B12B77ADE700A52BAE /* AllStatsView.swift */,
-				6252E61E2B657E7C0074F46A /* EndView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,9 +214,12 @@
 				621660A82B777DA500A52BAE /* HomeScreenView.swift in Sources */,
 				62ED76E02B65145A00262298 /* Multi_WizApp.swift in Sources */,
 				621660D02B79394700A52BAE /* SecondaryButtonModifier.swift in Sources */,
+				621661122B7EB72000A52BAE /* QuizNavigation.swift in Sources */,
 				6252E6192B653AE70074F46A /* QuizView.swift in Sources */,
 				621660AE2B77A21E00A52BAE /* StatsView.swift in Sources */,
+				621661162B7ECD4700A52BAE /* PreviewsData.swift in Sources */,
 				621660CE2B79386200A52BAE /* PrimaryButtonModifier.swift in Sources */,
+				621661142B7EBCF700A52BAE /* QuizData.swift in Sources */,
 				6252E61D2B6577700074F46A /* GameLogic.swift in Sources */,
 				6252E6212B65826F0074F46A /* FeedbackEnum.swift in Sources */,
 				6252E61B2B6559CD0074F46A /* QuestionModel.swift in Sources */,

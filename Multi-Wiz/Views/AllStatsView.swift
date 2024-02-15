@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AllStatsView: View {
     
+    @Binding var path: [QuizNavigation]
+    
     var allStats: [StatModel] {
         var statsArray = [StatModel]()
         for i in 2..<10 {
@@ -34,6 +36,6 @@ struct AllStatsView: View {
 }
 
 #Preview {
-    AllStatsView()
+    AllStatsView(path: PreviewsData.path)
 }
 

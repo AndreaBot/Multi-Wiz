@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeScreenView: View {
     
+    @Binding var path: [QuizNavigation]
+    @Binding var data: QuizData
+    
     var body: some View {
             ZStack {
                 Color(.myPurple)
@@ -22,26 +25,37 @@ struct HomeScreenView: View {
                             size * 0.8
                         }
                     
-                    NavigationLink {
-                        SettingsView()
+                    Button {
+                        path.append(.settingsView)
                     } label: {
                         Text("START")
                             .stylePrimaryButton()
                     }
                     
-                    NavigationLink {
-                        AllStatsView()
+                    Button {
+                        path.append(.allStatsView)
                     } label: {
                         Text("MY STATS")
-                            .styleSecondaryButton()
                     }
+                    .styleSecondaryButton()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationTitle("Multi Wiz")
+            .navigationDestination(for: QuizNavigation.self) { destination in
+                if destination == .settingsView {
+                    SettingsView(path: $path, data: $data)
+                } else if destination == .allStatsView {
+                    AllStatsView(path: $path)
+                } else if destination == .quizView {
+                    QuizView(path: $path, data: $data)
+                } else if destination == .endView {
+                    EndView(path: $path, data: $data)
+                }
+            }
         }
     }
 }
 
 #Preview {
-    HomeScreenView()
+    HomeScreenView(path: PreviewsData.path, data: PreviewsData.data)
 }

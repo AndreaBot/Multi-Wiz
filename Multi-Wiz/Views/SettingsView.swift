@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var baseNumber = 2
-    @State private var numberOfQuestions = 5
+    @Binding var path: [QuizNavigation]
+    @Binding var data: QuizData
+
     
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct SettingsView: View {
             
             Form {
                 Section {
-                    Picker("Base number:", selection: $baseNumber) {
+                    Picker("Base number:", selection: $data.baseNumber) {
                         ForEach(0..<10) { number in
                             if number != 0 && number != 1 {
                                 Text("\(number)")
@@ -30,12 +31,12 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    Stepper("Number of questions:  \(numberOfQuestions)", value: $numberOfQuestions, in: 5...20)
+                    Stepper("Number of questions:  \(data.numberOfQuestions)", value: $data.numberOfQuestions, in: 5...20)
                 }
                 
                 Section {
-                    NavigationLink {
-                        QuizView(baseNumber: baseNumber, numberOfQuestions: numberOfQuestions)
+                    Button {
+                        path.append(.quizView)
                     } label: {
                         Text("START")
                             .frame(maxWidth: .infinity)
@@ -47,9 +48,12 @@ struct SettingsView: View {
         }
         .background(.myPurple)
         .navigationTitle("Setup")
+        .onAppear() {
+            data = QuizData()
+        }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(path: PreviewsData.path, data: PreviewsData.data)
 }
