@@ -17,9 +17,7 @@ struct PrimaryButtonModifier: ViewModifier {
             .containerRelativeFrame(.horizontal) { size, axis in
                 size * 0.5
             }
-            .containerRelativeFrame(.vertical) { size, axis in
-                size * 0.06
-            }
+            .padding()
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }

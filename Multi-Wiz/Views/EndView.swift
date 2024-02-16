@@ -19,16 +19,24 @@ struct EndView: View {
     
     var body: some View {
         VStack(spacing: 40) {
+            Spacer()
+            
             VStack {
-                Spacer()
                 Text("GAME OVER")
                     .font(.largeTitle)
+                    .fontWeight(.heavy)
                 
                 Text("Final Score: \(data.correctAnswersCount)/\(data.numberOfQuestions)")
+                    .font(.title2)
+                    .fontWeight(.medium)
             }
+            .padding(40)
+            .background(.myPurple)
+            .clipShape(.rect(cornerRadius: 20))
+            
+            Spacer()
+            
             VStack(spacing: 30) {
-                Spacer()
-                
                 Button("Try Again") {
                     data.allQuestions = GameLogic.createQuiz(data.baseNumber, data.numberOfQuestions)
                     data.questionIndex = 0
@@ -46,15 +54,16 @@ struct EndView: View {
                     path.removeAll()
                 }
                 .styleSecondaryButton()
-                
-                Spacer()
             }
+            
+            Spacer()
         }
         .onAppear(perform: {
             print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         })
         .onDisappear(perform: saveStats)
         .navigationBarBackButtonHidden()
+        .preferredColorScheme(.dark)
     }
     
     func saveStats() {

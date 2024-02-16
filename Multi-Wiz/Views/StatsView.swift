@@ -21,7 +21,7 @@ struct StatsView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(.background)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 
                 VStack(alignment: .leading) {
                     Text("Games Played: \(stat.totGames)")
