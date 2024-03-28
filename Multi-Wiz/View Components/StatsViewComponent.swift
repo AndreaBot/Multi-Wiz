@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StatsView: View {
+struct StatsViewComponent: View {
     
     let stat: StatModel
     
@@ -58,5 +58,5 @@ struct StatsView: View {
 
 
 #Preview {
-    StatsView(stat: StatModel(baseNumber: 2, totGames: 3, mistakePercentage: 100))
+    StatsViewComponent(stat: StatModel(baseNumber: 2, totGames: 3, mistakePercentage: 100))
 }

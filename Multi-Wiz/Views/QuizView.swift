@@ -10,7 +10,7 @@ import SwiftUI
 struct QuizView: View {
     
     @Binding var path: [QuizNavigation]
-    @Binding var data: QuizData
+    var data: QuizData
 
     @State private var gameIsReady = false
     @State private var userAnswer = ""

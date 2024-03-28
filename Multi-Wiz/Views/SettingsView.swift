@@ -48,12 +48,12 @@ struct SettingsView: View {
         }
         .background(.myPurple)
         .navigationTitle("Setup")
-        .onAppear() {
-            data = QuizData()
+        .onAppear {
+            data.questionIndex = 0
         }
     }
 }
 
 #Preview {
-    SettingsView(path: PreviewsData.path, data: PreviewsData.data)
+    SettingsView(path: PreviewsData.path, data: PreviewsData.bindingData)
 }

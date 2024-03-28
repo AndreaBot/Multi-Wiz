@@ -10,7 +10,7 @@ import SwiftUI
 struct EndView: View {
     
     @Binding var path: [QuizNavigation]
-    @Binding var data: QuizData
+    var data: QuizData
     
     var stat: StatModel {
         loadStats() ?? StatModel(baseNumber: data.baseNumber, totGames: 0, mistakePercentage: 0)

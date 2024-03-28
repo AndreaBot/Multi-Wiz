@@ -23,7 +23,7 @@ struct AllStatsView: View {
     var body: some View {
         List {
             ForEach(allStats, id: \.baseNumber) { stat in
-                StatsView(stat: stat)
+                StatsViewComponent(stat: stat)
             }
             .listRowSeparator(.hidden)
         }

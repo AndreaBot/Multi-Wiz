@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		621660A82B777DA500A52BAE /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660A72B777DA500A52BAE /* HomeScreenView.swift */; };
-		621660AE2B77A21E00A52BAE /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660AD2B77A21E00A52BAE /* StatsView.swift */; };
+		621660AE2B77A21E00A52BAE /* StatsViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660AD2B77A21E00A52BAE /* StatsViewComponent.swift */; };
 		621660B02B77A42A00A52BAE /* StatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660AF2B77A42A00A52BAE /* StatModel.swift */; };
 		621660B22B77ADE700A52BAE /* AllStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660B12B77ADE700A52BAE /* AllStatsView.swift */; };
 		621660CE2B79386200A52BAE /* PrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621660CD2B79386200A52BAE /* PrimaryButtonModifier.swift */; };
@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		621660A72B777DA500A52BAE /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
-		621660AD2B77A21E00A52BAE /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		621660AD2B77A21E00A52BAE /* StatsViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewComponent.swift; sourceTree = "<group>"; };
 		621660AF2B77A42A00A52BAE /* StatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatModel.swift; sourceTree = "<group>"; };
 		621660B12B77ADE700A52BAE /* AllStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStatsView.swift; sourceTree = "<group>"; };
 		621660CD2B79386200A52BAE /* PrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonModifier.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 				6252E6222B6587D10074F46A /* SettingsView.swift */,
 				6252E6182B653AE70074F46A /* QuizView.swift */,
 				6252E61E2B657E7C0074F46A /* EndView.swift */,
-				621660AD2B77A21E00A52BAE /* StatsView.swift */,
 				621660B12B77ADE700A52BAE /* AllStatsView.swift */,
 			);
 			path = Views;
@@ -94,6 +93,14 @@
 				621660CF2B79394700A52BAE /* SecondaryButtonModifier.swift */,
 			);
 			path = "Custom Modifiers";
+			sourceTree = "<group>";
+		};
+		62189DD42BB62A6800B72186 /* View Components */ = {
+			isa = PBXGroup;
+			children = (
+				621660AD2B77A21E00A52BAE /* StatsViewComponent.swift */,
+			);
+			path = "View Components";
 			sourceTree = "<group>";
 		};
 		62ED76D32B65145A00262298 = {
@@ -117,6 +124,7 @@
 			children = (
 				62ED76DF2B65145A00262298 /* Multi_WizApp.swift */,
 				621660AA2B77830D00A52BAE /* Views */,
+				62189DD42BB62A6800B72186 /* View Components */,
 				621660A92B7782FD00A52BAE /* Model */,
 				621660D12B7939C100A52BAE /* Custom Modifiers */,
 				62ED76E32B65145C00262298 /* Assets.xcassets */,
@@ -212,7 +220,7 @@
 				621660D02B79394700A52BAE /* SecondaryButtonModifier.swift in Sources */,
 				621661122B7EB72000A52BAE /* QuizNavigation.swift in Sources */,
 				6252E6192B653AE70074F46A /* QuizView.swift in Sources */,
-				621660AE2B77A21E00A52BAE /* StatsView.swift in Sources */,
+				621660AE2B77A21E00A52BAE /* StatsViewComponent.swift in Sources */,
 				621661162B7ECD4700A52BAE /* PreviewsData.swift in Sources */,
 				621660CE2B79386200A52BAE /* PrimaryButtonModifier.swift in Sources */,
 				621661142B7EBCF700A52BAE /* QuizData.swift in Sources */,

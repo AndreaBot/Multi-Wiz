@@ -10,5 +10,6 @@ import SwiftUI
 struct PreviewsData {
     
     static let path = Binding.constant([QuizNavigation]())
-    static let data = Binding.constant(QuizData())
+    static let data = QuizData()
+    static let bindingData = Binding.constant(QuizData())
 }
