@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-    
-    @Binding var path: [QuizNavigation]
-    @Binding var data: QuizData
+
+    @State private var path = [QuizNavigation]()
+    @State private var data = QuizData()
     
     var body: some View {
+        NavigationStack(path: $path) {
             ZStack {
                 Color(.myPurple)
                     .ignoresSafeArea()
@@ -29,8 +30,8 @@ struct HomeScreenView: View {
                         path.append(.settingsView)
                     } label: {
                         Text("START")
-                            .stylePrimaryButton()
                     }
+                    .stylePrimaryButton()
                     
                     Button {
                         path.append(.allStatsView)
@@ -40,22 +41,23 @@ struct HomeScreenView: View {
                     .styleSecondaryButton()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationTitle("Multi Wiz")
-            .navigationDestination(for: QuizNavigation.self) { destination in
-                if destination == .settingsView {
-                    SettingsView(path: $path, data: $data)
-                } else if destination == .allStatsView {
-                    AllStatsView(path: $path)
-                } else if destination == .quizView {
-                    QuizView(path: $path, data: $data)
-                } else if destination == .endView {
-                    EndView(path: $path, data: $data)
+                .navigationDestination(for: QuizNavigation.self) { destination in
+                    if destination == .settingsView {
+                        SettingsView(path: $path, data: $data)
+                    } else if destination == .allStatsView {
+                        AllStatsView()
+                    } else if destination == .quizView {
+                        QuizView(path: $path, data: $data)
+                    } else if destination == .endView {
+                        EndView(path: $path, data: $data)
+                    }
                 }
             }
+            .navigationTitle("Multi Wiz")
         }
     }
 }
 
 #Preview {
-    HomeScreenView(path: PreviewsData.path, data: PreviewsData.data)
+    HomeScreenView()
 }

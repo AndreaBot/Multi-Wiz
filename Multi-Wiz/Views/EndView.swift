@@ -58,9 +58,9 @@ struct EndView: View {
             
             Spacer()
         }
-        .onAppear(perform: {
-            print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-        })
+//        .onAppear(perform: {
+//            print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+//        })
         .onDisappear(perform: saveStats)
         .navigationBarBackButtonHidden()
         .preferredColorScheme(.dark)

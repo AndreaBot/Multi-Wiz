@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameLogic {
     
-    static  func createQuiz( _ baseN: Int, _ nOfQuestions: Int) -> [QuestionModel] {
+    static func createQuiz( _ baseN: Int, _ nOfQuestions: Int) -> [QuestionModel] {
         var questionArray = [QuestionModel]()
         
         for _ in (1...nOfQuestions) {
