@@ -21,14 +21,35 @@ struct AllStatsView: View {
     }
     
     var body: some View {
-        List {
-            ForEach(allStats, id: \.baseNumber) { stat in
-                StatsViewComponent(stat: stat)
+        VStack {
+            if allStats.isEmpty {
+                ContentUnavailableView {
+                    VStack {
+                        Image(.X)
+                            .resizable()
+                            .scaledToFit()
+                            .containerRelativeFrame([.horizontal, .vertical]) { size, axis in
+                                size * 0.4
+                            }
+                            .clipShape(.circle)
+                        Text("Nothing to see here...yet.")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                        Text("Start practicing to see your stats here!")
+                            .font(.title3)
+                            .fontWeight(.thin)
+                    }
+                }
+            } else {
+                List {
+                    ForEach(allStats, id: \.baseNumber) { stat in
+                        StatsViewComponent(stat: stat)
+                    }
+                    .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
             }
-            .listRowSeparator(.hidden)
         }
-        
-        .listStyle(.plain)
         .navigationTitle("My Stats")
     }
 }
