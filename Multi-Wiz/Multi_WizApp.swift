@@ -11,7 +11,7 @@ import SwiftUI
 struct Multi_WizApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeScreenView()
         }
     }
 }
