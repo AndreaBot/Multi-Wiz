@@ -47,7 +47,7 @@ struct HomeScreenView: View {
                     } else if destination == .allStatsView {
                         AllStatsView()
                     } else if destination == .quizView {
-                        QuizView(path: $path, data: data)
+                        QuizView(path: $path, data: $data)
                     } else if destination == .endView {
                         EndView(path: $path, data: data)
                     }

@@ -10,12 +10,9 @@ import SwiftUI
 struct EndView: View {
     
     @Binding var path: [QuizNavigation]
-    var data: QuizData
+    @State private var viewModel = ViewModel(data: nil)
     
-    var stat: StatModel {
-        loadStats() ?? StatModel(baseNumber: data.baseNumber, totGames: 0, mistakePercentage: 0)
-        
-    }
+    var data: QuizData
     
     var body: some View {
         VStack(spacing: 40) {
@@ -38,9 +35,7 @@ struct EndView: View {
             
             VStack(spacing: 30) {
                 Button("Try Again") {
-                    data.allQuestions = GameLogic.createQuiz(data.baseNumber, data.numberOfQuestions)
-                    data.questionIndex = 0
-                    data.correctAnswersCount = 0
+                    data.tryAgain()
                     path.removeLast()
                 }
                 .stylePrimaryButton()
@@ -61,27 +56,12 @@ struct EndView: View {
 //        .onAppear(perform: {
 //            print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
 //        })
-        .onDisappear(perform: saveStats)
+        .onAppear {
+            viewModel.data = data
+        }
+        .onDisappear(perform: viewModel.saveStats)
         .navigationBarBackButtonHidden()
         .preferredColorScheme(.dark)
-    }
-    
-    func saveStats() {
-        let percentage = Double(100 * (data.numberOfQuestions - data.correctAnswersCount) / data.numberOfQuestions)
-        let newStat = StatModel(baseNumber: data.baseNumber, totGames: stat.totGames + 1, mistakePercentage: (stat.mistakePercentage + percentage) / Double(stat.totGames + 1))
-        
-        if let statData = try? JSONEncoder().encode(newStat) {
-            UserDefaults.standard.set(statData, forKey: "table of \(data.baseNumber)")
-        }
-    }
-    
-    func loadStats() -> StatModel?  {
-        if let savedData = UserDefaults.standard.object(forKey: "table of \(data.baseNumber)") as? Data,
-           let stat = try? JSONDecoder().decode(StatModel.self, from: savedData) {
-            return stat
-        } else {
-            return nil
-        }
     }
 }
 

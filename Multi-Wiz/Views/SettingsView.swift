@@ -12,7 +12,6 @@ struct SettingsView: View {
     @Binding var path: [QuizNavigation]
     @Binding var data: QuizData
 
-    
     var body: some View {
         VStack {
             Spacer()
@@ -50,6 +49,7 @@ struct SettingsView: View {
         .navigationTitle("Setup")
         .onAppear {
             data.questionIndex = 0
+            data.correctAnswersCount = 0
         }
     }
 }
