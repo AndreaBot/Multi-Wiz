@@ -58,8 +58,8 @@ struct EndView: View {
 //        })
         .onAppear {
             viewModel.data = data
+            viewModel.saveStats()
         }
-        .onDisappear(perform: viewModel.saveStats)
         .navigationBarBackButtonHidden()
         .preferredColorScheme(.dark)
     }
