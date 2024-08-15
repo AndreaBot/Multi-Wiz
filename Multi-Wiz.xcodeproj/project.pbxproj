@@ -25,7 +25,18 @@
 		62ED76E02B65145A00262298 /* Multi_WizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED76DF2B65145A00262298 /* Multi_WizApp.swift */; };
 		62ED76E42B65145C00262298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62ED76E32B65145C00262298 /* Assets.xcassets */; };
 		62ED76E72B65145C00262298 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62ED76E62B65145C00262298 /* Preview Assets.xcassets */; };
+		62FAC0812C6EA928004AF112 /* JobJotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FAC0802C6EA928004AF112 /* JobJotTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62FAC0822C6EA928004AF112 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62ED76D42B65145A00262298 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62ED76DB2B65145A00262298;
+			remoteInfo = "Multi-Wiz";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		621660A72B777DA500A52BAE /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -47,10 +58,19 @@
 		62ED76DF2B65145A00262298 /* Multi_WizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi_WizApp.swift; sourceTree = "<group>"; };
 		62ED76E32B65145C00262298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62ED76E62B65145C00262298 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		62FAC07E2C6EA928004AF112 /* JobJotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobJotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62FAC0802C6EA928004AF112 /* JobJotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobJotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		62ED76D92B65145A00262298 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62FAC07B2C6EA928004AF112 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				62ED76DE2B65145A00262298 /* Multi-Wiz */,
+				62FAC07F2C6EA928004AF112 /* JobJotTests */,
 				62ED76DD2B65145A00262298 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				62ED76DC2B65145A00262298 /* Multi-Wiz.app */,
+				62FAC07E2C6EA928004AF112 /* JobJotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +171,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		62FAC07F2C6EA928004AF112 /* JobJotTests */ = {
+			isa = PBXGroup;
+			children = (
+				62FAC0802C6EA928004AF112 /* JobJotTests.swift */,
+			);
+			path = JobJotTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +199,24 @@
 			productReference = 62ED76DC2B65145A00262298 /* Multi-Wiz.app */;
 			productType = "com.apple.product-type.application";
 		};
+		62FAC07D2C6EA928004AF112 /* JobJotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62FAC0862C6EA928004AF112 /* Build configuration list for PBXNativeTarget "JobJotTests" */;
+			buildPhases = (
+				62FAC07A2C6EA928004AF112 /* Sources */,
+				62FAC07B2C6EA928004AF112 /* Frameworks */,
+				62FAC07C2C6EA928004AF112 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62FAC0832C6EA928004AF112 /* PBXTargetDependency */,
+			);
+			name = JobJotTests;
+			productName = JobJotTests;
+			productReference = 62FAC07E2C6EA928004AF112 /* JobJotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,11 +224,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					62ED76DB2B65145A00262298 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					62FAC07D2C6EA928004AF112 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 62ED76DB2B65145A00262298;
 					};
 				};
 			};
@@ -198,6 +250,7 @@
 			projectRoot = "";
 			targets = (
 				62ED76DB2B65145A00262298 /* Multi-Wiz */,
+				62FAC07D2C6EA928004AF112 /* JobJotTests */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +262,13 @@
 			files = (
 				62ED76E72B65145C00262298 /* Preview Assets.xcassets in Resources */,
 				62ED76E42B65145C00262298 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62FAC07C2C6EA928004AF112 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +298,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		62FAC07A2C6EA928004AF112 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62FAC0812C6EA928004AF112 /* JobJotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62FAC0832C6EA928004AF112 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62ED76DB2B65145A00262298 /* Multi-Wiz */;
+			targetProxy = 62FAC0822C6EA928004AF112 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		62ED76E82B65145C00262298 /* Debug */ = {
@@ -416,6 +492,44 @@
 			};
 			name = Release;
 		};
+		62FAC0842C6EA928004AF112 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L52JR8SNCR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndreaBottino.JobJotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Multi-Wiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Multi-Wiz";
+			};
+			name = Debug;
+		};
+		62FAC0852C6EA928004AF112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L52JR8SNCR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndreaBottino.JobJotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Multi-Wiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Multi-Wiz";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -433,6 +547,15 @@
 			buildConfigurations = (
 				62ED76EB2B65145C00262298 /* Debug */,
 				62ED76EC2B65145C00262298 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62FAC0862C6EA928004AF112 /* Build configuration list for PBXNativeTarget "JobJotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62FAC0842C6EA928004AF112 /* Debug */,
+				62FAC0852C6EA928004AF112 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
